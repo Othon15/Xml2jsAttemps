@@ -1,3 +1,15 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title xml2js homepage
+
+  body 
+   h1 working!
+
+
 fetch('/xml2js/customer', {
   method: 'POST',
   headers: {
@@ -9,5 +21,5 @@ fetch('/xml2js/customer', {
   console.log('Response status: ' + response.status);
   return response.text();
 })
-.then(responseText => console.log('Response text: ' + responseText)
+.then(responseText => console.log('Response text: ' + responseText))
 .catch(error => console.log('Error caught: ' + error));
