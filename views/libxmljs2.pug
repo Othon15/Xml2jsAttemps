@@ -1,0 +1,13 @@
+fetch('/libxmljs2/validateSessionXml', {
+  method: 'POST',
+  headers: { 'Content-Type': 'text/xml' },
+  body: <?xml version="1.0"?>
+<sessionInfo id="45664434343">
+  <customerId>39399444</customerId>
+  <customerName>Bob Smith</customerName>
+  <token>343ldf0bk343bz43lddd</token>
+</sessionInfo>
+})
+.then(response => response.text())
+.then(response => console.log(response))
+.catch(error => console.log('Error caught: ' + error));
