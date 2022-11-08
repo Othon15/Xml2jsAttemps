@@ -7,7 +7,7 @@ var libxmljs2Router = require('./routes/libxmljs2');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use('/routes/libxmljs2',libxmljs2Router);
+app.use('/libxmljs2',libxmljs2Router);
 
 app.use(xmlparser({
     normalizeTags: false
