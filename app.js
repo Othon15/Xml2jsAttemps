@@ -4,10 +4,12 @@ const xmlparser = require ("express-xml-bodyparser");
 const app = express();
 var path = require('path');
 var libxmljs2Router = require('./routes/libxmljs2');
+var cheerioRouter = require('./routes/cheerio');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use('/libxmljs2',libxmljs2Router);
+app.use('/', cheerioRouter);
 
 app.use(xmlparser({
     normalizeTags: false
@@ -40,6 +42,11 @@ app.post('/xml2js/customer', function(req, res, next) {
   } else {
     res.status(400).send('Unexpected XML received, missing <retrieveCustomer>');
   }
+});
+
+
+app.listen(3000,function(){
+  console.log("Connected on port 3000");
 });
 
 

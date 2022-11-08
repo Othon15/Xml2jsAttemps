@@ -1,0 +1,48 @@
+var sampleHtml = 
+  '<table border="1" cellpadding="5px" cellspacing="0">\n' +
+  '  <tr>\n' +
+  '    <td>Sammy Steakhouse Inc.</td>\n' +
+  '    <td>-130.33</td>\n' +
+  '  </tr>\n' +
+  '  <tr>\n' +
+  '    <td>ATM deposit</td>\n' +
+  '    <td>500.00</td>\n' +
+  '  </tr>\n' +
+  '  <tr>\n' +
+  '    <td>Government cheque deposit</td>\n' +
+  '    <td>150.00</td>\n' +
+  '  </tr>\n' +
+  '</table>';
+
+fetch('/cheerio/highlightTable', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    encodedHtml: encodeURI(sampleHtml)
+  })
+})
+.then(response => response.json())
+.then(response => {
+  if (response.error) {
+    console.log('Error received: ' + response.error);
+  } else {
+    decodedHtml = decodeURI(response.encodedHtml);
+    console.log('Received HTML: ' + decodedHtml);
+    // console output:
+    // <table border="1" cellpadding="5px" cellspacing="0">
+    //  <tbody><tr>
+    //    <td>Sammy Steakhouse Inc.</td>
+    //    <td style="background-color: #fa8072">-130.33</td>
+    //  </tr>
+    //  <tr>
+    //    <td>ATM deposit</td>
+    //    <td style="background-color: #90ee90">500.00</td>
+    //  </tr>
+    //  <tr>
+    //    <td>Government cheque deposit</td>
+    //    <td style="background-color: #90ee90">150.00</td>
+    //  </tr>
+    // </tbody></table>
+  }
+})
+.catch(error => console.log('Error caught: ' + ${error})); 
