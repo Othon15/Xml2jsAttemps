@@ -1,0 +1,12 @@
+fetch('/svgson/updateSVGImageColors', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    color1: '#FF0000', 
+    color2: '#00FF00',
+    color3: '#0000FF'
+  })
+})
+.then(response => response.text())
+.then(svgImageXml => console.log(svgImageXml))
+.catch(error => console.log('Error caught: ' + error));

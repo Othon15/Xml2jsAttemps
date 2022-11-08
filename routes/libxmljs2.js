@@ -2,19 +2,10 @@
 const express = require('express');
 var router = express.Router();
 var libxmljs = require('libxmljs2');
-var xml =
-  '<?xml version="1.0" encoding="UTF-8"?>' +
-  '<root>' +
-  '<child foo="bar">' +
-  '<grandchild baz="fizbuzz">grandchild content</grandchild>' +
-  '</child>' +
-  '<sibling>with content!</sibling>' +
-  '</root>';
 var fs = require('fs');
 var path = require('path');
 
 var router = express.Router();
-
 
 router.get('/libxmljs2', function(req, res, next) {
     res.render('libxmljs2', {});

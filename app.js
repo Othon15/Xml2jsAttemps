@@ -5,9 +5,12 @@ const app = express();
 var path = require('path');
 var libxmljs2Router = require('./routes/libxmljs2');
 var cheerioRouter = require('./routes/cheerio');
+var svgsonRouter = require('./routes/svgson');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use('/', svgsonRouter);
 app.use('/libxmljs2',libxmljs2Router);
 app.use('/', cheerioRouter);
 
